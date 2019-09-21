@@ -1,0 +1,11 @@
+#!/bin/bash
+function git-lignore()
+{
+  if test -f .local_gitignore; then
+    printf "$1\n" >> .local_gitignore;
+  else
+    ln -s .git/info/exclude .local_gitignore;
+    printf ".local_gitignore\n$1\n" >> .local_gitignore;
+  fi
+}
+git-lignore $1;
